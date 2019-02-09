@@ -28,4 +28,4 @@ date: 2019-02-09 11:34:00
 
 ### 原文
 
-[original]()
+[original](https://www.theatlantic.com/family/archive/2019/01/affective-presence-how-you-make-other-people-feel/579643/)
