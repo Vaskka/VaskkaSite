@@ -85,6 +85,67 @@ e.g. $r \cup s$（将r，s表中所有的元素进行合并，再去重）。
 
 e.g. $r-s$（生成一个新表，其中record存在r表中但不存在s表中）。
 
-#### 交运算
+#### 交
 
 e.g. $r \cap s$（同时在r和s表中的record）
+
+# SQL
+
+> 生于IBM实验室（IBM San Jose Research Laboratory）
+> 基于版本：SQL-92
+
+## DDL (data-definition language)
+
+### 主要功能（应用）
+
++ **定义表结构**
++ **定义数据约束**
++ **参照定义**
++ **安全授权定义**
++ **物理存储的定义**
++ ...
+
+## domain types in SQL (SQL的域类型)
+
++ char 定长字符串
++ varchar(n) 可变定长n的字符串
++ int 机器相关的integer
++ smallint 短整型
++ numeric(d, p) 数字类型，总位数d位，小数点后p位
++ real，double，precision 双精度
++ float 单精度
+
+## 具体查询
+
+### 建表
+
+e.g. 
+``` sql
+create table r (
+    A_1      D_1, # A_1   D_1   primary key, 标注格式也可以
+    A_2      D_2 not null,
+    ...,
+    A_n      D_n,
+    primary key (A_n),
+    foreign key (A_fk) references A_pk 
+    );
+# 其中，A_fk 称作 参照表 的外码，A_pk 是 被参照表 的主码
+```
++ 主码默认**not null**
+
+### 改动表
+
+e.g.
+``` sql
+# 删除表结构及其数据
+drop table r;
+
+# 删除表中数据保留表结构
+delete from r;
+
+# 增加列（属性）（默认分配 null ）
+alter table r add A D(n);
+
+# 删除列 （属性）（大多数据库的实现不支持此操作）
+alter table r drop A;
+```
