@@ -1,10 +1,11 @@
 title: OS-1
 author: Vaskka
 tags:
-  - os
   - note
+  - os
 categories:
   - os
+  - notes
 date: 2019-03-06 13:51:00
 ---
 # operating system

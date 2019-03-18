@@ -1,7 +1,10 @@
 title: database-note-2
 author: Vaskka
-tags: []
-categories: []
+tags:
+  - database
+  - note
+categories:
+  - notes
 date: 2019-03-11 08:16:00
 ---
 # SQL
