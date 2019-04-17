@@ -1,7 +1,7 @@
 title: database-note-1
 author: Vaskka
 tags:
-  - datababe
+  - database
   - note
 categories:
   - notes
