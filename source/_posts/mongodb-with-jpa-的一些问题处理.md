@@ -27,7 +27,7 @@ maven依赖：pom.xml
 		</dependency>
 ```
 
-和mysql的依赖比起来简介不少。
+和mysql的依赖比起来简洁不少。
 
 应用级配置：application.properties
 
@@ -126,4 +126,3 @@ show collections
 + userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限
 + dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。
 + root：只在admin数据库中可用。超级账号，超级权限
-
