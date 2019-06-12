@@ -54,7 +54,7 @@ main.cpp
 // 初始化标记
 #define INIT_FLAG 0
 
-/* 全局功共享变量，包括主要讨论的缓冲区变量j和一些条件变量 */
+/* 全局功共享变量，包括主要讨论的缓冲区变量和一些条件变量 */
 
 // 互斥锁
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -200,13 +200,14 @@ int main(int argc, const char * argv[]) {
 运行结果：
 ![demo1运行结果](https://raw.githubusercontent.com/Vaskka/GitLearn/master/OS-5-algorithm/producter-and-customer/demo1-output.png)
 
-可以发现生产者和消费者的线程数量也许太少了，生产了1个消费者立即进行消费。
+可以发现生产者和消费者的线程数量也许太少了，生产者生产了1个，消费者会立即进行消费。
 
 ## 版本二
 
 > 生产者消费者多个线程
 
-```sql
+main.cpp
+```cpp
 //
 //  main.cpp
 //  producer_and_customer
@@ -233,7 +234,7 @@ int main(int argc, const char * argv[]) {
 // 消费者线程数量
 #define CUSTOMER_NUM 1
 
-/* 全局功共享变量，包括主要讨论的缓冲区变量j和一些条件变量 */
+/* 全局功共享变量，包括主要讨论的缓冲区变量和一些条件变量 */
 
 // 互斥锁
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
