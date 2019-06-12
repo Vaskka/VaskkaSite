@@ -18,7 +18,7 @@ date: 2019-06-12 15:26:00
 
 ## 思路
 
-对于生产者和消费者的互斥操作来说，可以用一个条件变量解决。对于为空时消费者不能消费的条件使用一个信号量标记控制是否为空，且每次生产者进行生产时通知消费者进行消费，不能消费便阻塞。同样，对于缓冲区满了生产者不能再生产，也用一个条件变量控制思路相似此处不在赘述。
+对于生产者和消费者的互斥操作来说，可以用一个条件变量解决。对于为空时消费者不能消费的条件使用一个信号量标记控制是否为空，且每次生产者进行生产时通知消费者进行消费，不能生产便阻塞。同样，对于缓冲区满了生产者不能再生产，也用一个条件变量控制，思路相似，此处不在赘述。
 
 每次生产者流程：
 ![生产者流程](https://raw.githubusercontent.com/Vaskka/GitLearn/master/OS-5-algorithm/producter-and-customer/ProductorAndCustomer-Producer.png)
@@ -104,7 +104,7 @@ void * producer(void * pid) {
         // 进行生产
         buffer[producerIndex] = PRODUCER_FLAG;
         
-        // 统计变量j自增
+        // 统计变量自增
         count++;
         
         // print
@@ -150,7 +150,7 @@ void * customer(void * cid) {
         // 进行消费
         buffer[customerIndex] = CUSTOMER_FLAG;
         
-        // 更新总计变量
+        // 更新统计变量
         count--;
         
         // print
@@ -220,12 +220,12 @@ int main(int argc, const char * argv[]) {
 
 # 一些补充
 
-在demo实现中我们可以看出，对于生产者和消费者的临界区处理我是先加锁再pthread_cond_wait，而思路中我们计划的是先wait再加锁。这里的原因如下，思路中的wait计划使用的是类似原语的操作，即具有原子性；而pthread库提供的wait接口int pthread_cond_wait(pthread_cond_t* cond, pthread_mutex_t* mutex);的实现过程为：
+在demo实现中我们可以看出，对于生产者和消费者的临界区处理我是先加锁再pthread_cond_wait，而思路中我们计划的是先wait再加锁。这里的原因如下，思路中的wait计划使用的是类似原语的操作，即具有原子性；而pthread库提供的wait接口int pthread_cond_wait(pthread_cond_t\* cond, pthread_mutex_t\* mutex);的实现过程为：
 + 先将mutex解开
 + 再操作cond
 + 再把mutex锁回去
 
-因此，想要让这一操作也是原子性的，我们需要把临界区的范围扩大即提前加锁。当然了，signal与unlock的操作与思路中提到的顺序相反同样是这个原因。
+因此，想要让这一操作也是原子性的，我们需要把临界区的范围扩大，即提前加锁。当然了，signal与unlock的操作与思路中提到的顺序相反同样是这个原因。
 
 # 参考
 
