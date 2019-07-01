@@ -12,7 +12,7 @@ date: 2019-06-30 15:07:00
 
 > [猜数字](https://leetcode-cn.com/problems/bulls-and-cows/submissions)
 
-题目意思大概是两列长度相等的数列，如果第一位称为secret，第二列叫guess，如果对$i \in {0, ... ,secret.length}$，有$secret[i] = guess[i]$称之为公牛，此时的i记录在公牛集$BullSet$中，有$secret[j] \in guess \and j \notin BullSet \and j \notin CowSet$，称之为奶牛，此时的j记录在奶牛集$CowSet$中。
+题目意思大概是两列长度相等的数列，如果第一位称为secret，第二列叫guess，如果对$i \in \{0, ... ,secret.length\}$，有$secret\[i\] = guess\[i\]$称之为公牛，此时的i记录在公牛集$BullSet$中，有$secret\[j\] \in guess \land j \notin BullSet \land j \notin CowSet$，称之为奶牛，此时的j记录在奶牛集$CowSet$中。
 
 简单描述题目基本已经把解法说清楚了，模拟即可，一下是模拟的结果：
 
@@ -58,9 +58,9 @@ date: 2019-06-30 15:07:00
 	}
 ```
 
-很容易理解但是占内存又大时间又长，下面学习一下一个比较快而且很巧妙的解法，copy from the solution。
+很容易理解但是占内存又大时间又久，下面学习一下一个比较快而且很巧妙的解法，copy from the solution。
 
-```
+```java
     public String getHint(String secret, String guess) {
 		
         // ab[0]代表A，ab[1]代表B
