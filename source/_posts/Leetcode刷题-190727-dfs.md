@@ -67,7 +67,7 @@ public class Solution {
 
 ## Object::hashcode() 的原理
 
-根据Object.java 对于```public native int hashCode();```的文档来看，hashcode这个方法的设计有这样几个特点：
+根据Object.java 对于public native int hashCode();的文档来看，hashcode这个方法的设计有这样几个特点：
 
 1. 两次java程序的执行中，对于同一个对象调用hashcode方法返回的整数一般是不同的，但是同一个java程序中对同一个对象调用hashcode方法返回的整数是相同的。这一点在第3点中有更详细的解释。
 2. 如果两个对象调用equals方法返回true那么这两个方法的hashcode一定是相等的，但是相反如果为false，那么这两个方法的hashcode不一定相等。但是如果我们在设计时使得这两个hashcode能够不同会提高哈希表（java.util.HashMap）的效率。
